@@ -25,11 +25,16 @@
   </div>
     <div id="content">
    <h1>Registrazione Nuovo Cliente</h1>
-   <form action="" method="post">
-   
-   <input type="text" name="nome" required />
-   <input type="submit" value="Registra"  />
-   </form>
+<form action="doRegistrazione.jsp" method="post">
+Nome: <input type="text" name="nome" /> <br>
+Cognome: <input type="text" name="cognome"/> <br>
+Username: <input type="text" name="username"/> <br>
+Password: <input type="password" name="password"/> <br>
+
+<input type="submit" value ="Registrati"/>
+
+</form>
+
    
   </div>
     <div id="footer">
