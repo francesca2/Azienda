@@ -45,8 +45,8 @@ I vari database disponibili sono in core-dialect. Oracle9 è deprecato e posso a
 <mapping class="it.alfasoft.francesca.bean.AdminBean" />
 <mapping class="it.alfasoft.francesca.bean.ClienteBean" />
 <mapping class="it.alfasoft.francesca.bean.DipendenteBean" />
-<mapping class="model.Voce" />
-<mapping class="model.Rubrica" />
+<mapping class="it.alfasoft.francesca.bean.VoceBean" />
+<mapping class="it.alfasoft.francesca.bean.RubricaBean" />
 
 
  </session-factory>

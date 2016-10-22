@@ -1,6 +1,7 @@
 package it.alfasoft.francesca.dao;
 
 import hibernateUtil.HibernateUtil;
+import it.alfasoft.francesca.bean.VoceBean;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
@@ -16,12 +17,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import model.Voce;
-
 
 public class VoceDao {
 	
-	public boolean aggiungiVoce(Voce v)
+	public boolean aggiungiVoce(VoceBean v)
 	{
 		boolean b=false;
 		
@@ -46,9 +45,9 @@ public class VoceDao {
 
 	}
 	
-	public Voce trovaVoce(String nome, String cognome, long idRubrica)
+	public VoceBean trovaVoce(String nome, String cognome, long idRubrica)
 	{
-		Voce v=null;
+		VoceBean v=null;
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
 
@@ -56,12 +55,12 @@ public class VoceDao {
 		tx=session.getTransaction();
 		tx.begin();
 
-		Query query=session.createQuery("from Voce where Rubrica_id_Rubrica=:x1 and nome=:x2 and cognome=:x3");
+		Query query=session.createQuery("from VoceBean where Rubrica_id_Rubrica=:x1 and nome=:x2 and cognome=:x3");
 		query.setLong("x1", idRubrica);
 		query.setString("x2", nome);
 		query.setString("x3", cognome);
 		
-		v=(Voce) query.uniqueResult();
+		v=(VoceBean) query.uniqueResult();
 		 
 		 tx.commit();
 		}catch(Exception ex){
@@ -73,7 +72,7 @@ public class VoceDao {
 		return v;
 	}
 	
-	public boolean aggiornaVoce(Voce v)
+	public boolean aggiornaVoce(VoceBean v)
 	{
 		boolean result=false;
 		Session session =HibernateUtil.openSession();
@@ -97,7 +96,7 @@ public class VoceDao {
 	}
 	
 
-	public boolean eliminaVoce(Voce v)
+	public boolean eliminaVoce(VoceBean v)
 	{
 		boolean result=false;
 		Session session =HibernateUtil.openSession();

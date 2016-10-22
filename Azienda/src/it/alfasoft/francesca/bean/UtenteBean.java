@@ -8,7 +8,7 @@ import Utility.IsValid;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class UtenteBean implements Serializable, IsValid{
+public class UtenteBean implements Serializable{
 
 	/**
 	 * 
@@ -87,23 +87,6 @@ public class UtenteBean implements Serializable, IsValid{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	@Override
-	public boolean isValid() {
-
-		boolean result=false;
-		
-		if(!nome.isEmpty() && nome!=null && 
-				!cognome.isEmpty() && cognome!=null &&
-				!username.isEmpty() && username!=null &&
-				!password.isEmpty() && password!=null) {
-			if(ruolo=='a' || ruolo=='c' || ruolo=='d') {
-			result=true;
-			}
-		}
-		
-		return result;
 	}
 
 }

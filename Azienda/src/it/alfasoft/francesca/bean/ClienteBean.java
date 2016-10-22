@@ -2,8 +2,10 @@ package it.alfasoft.francesca.bean;
 
 import javax.persistence.*;
 
+import Utility.IsValid;
+
 @Entity
-public class ClienteBean extends UtenteBean  {
+public class ClienteBean extends UtenteBean implements IsValid  {
 
 	/**
 	 * 
@@ -41,6 +43,24 @@ public class ClienteBean extends UtenteBean  {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public boolean isValid() {
+
+		boolean result=false;
+		
+		if(!nome.isEmpty() && nome!=null && 
+				!cognome.isEmpty() && cognome!=null &&
+				!username.isEmpty() && username!=null &&
+				!password.isEmpty() && password!=null &&
+				ruolo=='c' &&
+				!ragioneSociale.isEmpty() && ragioneSociale!=null &&
+				!pIVA.isEmpty() && pIVA!=null) {
+			result=true;
+		}
+		
+		return result;
 	}
 	
 }

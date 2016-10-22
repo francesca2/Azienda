@@ -1,6 +1,8 @@
 package it.alfasoft.francesca.dao;
 
 import hibernateUtil.HibernateUtil;
+import it.alfasoft.francesca.bean.RubricaBean;
+import it.alfasoft.francesca.bean.VoceBean;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
@@ -17,13 +19,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import model.Rubrica;
-import model.Voce;
-
 public class RubricaDao {
 	
 	//Primo metodo-crea una nuova tebella rubrica
-	public boolean creaRubrica(Rubrica r){
+	public boolean creaRubrica(RubricaBean r){
 
 		boolean result=false;
 		
@@ -49,7 +48,7 @@ public class RubricaDao {
 	public boolean creaRubrica(String nome)
 	{
 		boolean result=false;
-		Rubrica r =new Rubrica();
+		RubricaBean r =new RubricaBean();
 		r.setNomeRubrica(nome);
 		
 		Session session =HibernateUtil.openSession();
@@ -73,9 +72,9 @@ public class RubricaDao {
 
 	//Secondo metodo- legge una rubrica
 	
-	public Rubrica trovaRubricaConId(long idRubrica)
+	public RubricaBean trovaRubricaConId(long idRubrica)
 	{
-		Rubrica r=null;
+		RubricaBean r=null;
 		
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
@@ -84,7 +83,7 @@ public class RubricaDao {
 		tx=session.getTransaction();
 		tx.begin();
 
-		r=session.get(Rubrica.class, idRubrica);
+		r=session.get(RubricaBean.class, idRubrica);
 		
 		 tx.commit();
 		}catch(Exception ex){
@@ -96,9 +95,9 @@ public class RubricaDao {
 		
 	}
 	
-	public Rubrica trovaRubricaConNome(String nome)
+	public RubricaBean trovaRubricaConNome(String nome)
 	{
-		Rubrica r=null;
+		RubricaBean r=null;
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
 
@@ -106,9 +105,9 @@ public class RubricaDao {
 		tx=session.getTransaction();
 		tx.begin();
 
-		Query query= session.createQuery("from Rubrica where nomeRubrica=:x");
+		Query query= session.createQuery("from RubricaBean where nomeRubrica=:x");
 		query.setString("x", nome);
-		r=(Rubrica) query.uniqueResult();
+		r=(RubricaBean) query.uniqueResult();
 		
 		 tx.commit();
 		}catch(Exception ex){
@@ -121,7 +120,7 @@ public class RubricaDao {
 	}
 	
 	//Aggiorna rubrica
-	public boolean aggiornaRubrica(Rubrica r)
+	public boolean aggiornaRubrica(RubricaBean r)
 	{
 		boolean result=false;
 		Session session =HibernateUtil.openSession();
@@ -144,9 +143,9 @@ public class RubricaDao {
 		
 	}
 
-public List<Voce> getVociRubrica(String nome)
+public List<VoceBean> getVociRubrica(String nome)
 {
-	List<Voce> voci= new ArrayList<Voce>();
+	List<VoceBean> voci= new ArrayList<VoceBean>();
 	Session session =HibernateUtil.openSession();
 	Transaction tx=null;
 
@@ -154,7 +153,7 @@ public List<Voce> getVociRubrica(String nome)
 	tx=session.getTransaction();
 	tx.begin();
 
-	Query query= session.createQuery("from Rubrica where nomeRubrica=:x");
+	Query query= session.createQuery("from RubricaBean where nomeRubrica=:x");
 	query.setString("x", nome);
 	 voci=query.list();
 	

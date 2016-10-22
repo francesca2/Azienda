@@ -1,10 +1,12 @@
 package it.alfasoft.francesca.service;
 
-import model.Rubrica;
-import model.Voce;
+import java.util.List;
+
 import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.bean.DipendenteBean;
+import it.alfasoft.francesca.bean.RubricaBean;
 import it.alfasoft.francesca.bean.UtenteBean;
+import it.alfasoft.francesca.bean.VoceBean;
 import it.alfasoft.francesca.dao.ClienteDao;
 import it.alfasoft.francesca.dao.DipendenteDao;
 import it.alfasoft.francesca.dao.RubricaDao;
@@ -55,11 +57,9 @@ public class Servizi {
 	}
 	
 	//metodo per aggiungere una voce in rubrica
-	public boolean registraVoce(Rubrica r,String nome, String cognome, String telefono) {
+	public boolean registraVoce(RubricaBean r,VoceBean v) {
 		boolean result= false;
-		
-		Voce v=new Voce(nome,cognome,telefono);
-		v.setRubrica(r);		
+		v.setRubrica(r);
 		r.addVoce(v);
 		boolean b=vdao.aggiungiVoce(v);
 		rdao.aggiornaRubrica(r);
@@ -74,12 +74,28 @@ public class Servizi {
 	}
 	
 	//Metodo per trovare la rubrica di un utente a seconda del suo username
-	public Rubrica trovaRubrica(String username) {
+	public RubricaBean trovaRubrica(String username) {
 		
-		Rubrica r= rdao.trovaRubricaConNome(username);
+		RubricaBean r= rdao.trovaRubricaConNome(username);
 		
 		return r;
 	}
 	
+	//metodo per prendere tutte le voci di rubrica
+		public List<VoceBean> getVoci(RubricaBean r)
+		{
+			List<VoceBean> voci= rdao.getVociRubrica(r.getNomeRubrica());
+			
+			return voci;
+	}
+		
+		
+		//metodo per eliminare una voce
+		public boolean eliminaVoce(RubricaBean r, String nome, String cognome)
+		{
+			VoceBean v=vdao.trovaVoce(nome, cognome, r.getIdRubrica());
+			boolean result=vdao.eliminaVoce(v);
+			return result;
+	}
 
 }

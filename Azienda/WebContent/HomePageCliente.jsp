@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@ taglib prefix="c" 
+uri="http://java.sun.com/jsp/jstl/core" %>
     
 <jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
 	scope="session"></jsp:useBean>
@@ -15,9 +17,12 @@
 <body>
 
 <div id="Container">
-  
+
   <div id="header">
-<h1>Header</h1>
+<h1>
+  <c:out value="${utente.nome}"/>
+  <c:out value="${utente.cognome}"/>
+</h1>
   
   </div>
   
