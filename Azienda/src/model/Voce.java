@@ -1,16 +1,12 @@
-package it.alfasoft.francesca.bean;
-
-import java.io.Serializable;
+package model;
 
 import javax.persistence.*;
 
-@Entity
-public class VoceBean implements Serializable {
+import Utility.IsValid;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity
+public class Voce implements IsValid {
+
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -20,12 +16,12 @@ public class VoceBean implements Serializable {
 	private String telefono;
 
 	@ManyToOne
-	private RubricaBean rubrica;
+	private Rubrica rubrica;
 
-	public VoceBean() {
+	public Voce() {
 	}
 
-	public VoceBean(String nomeVoce, String cognomeVoce, String telefono) {
+	public Voce(String nomeVoce, String cognomeVoce, String telefono) {
 		this.nomeVoce = nomeVoce;
 		this.cognomeVoce = cognomeVoce;
 		this.telefono = telefono;
@@ -63,16 +59,26 @@ public class VoceBean implements Serializable {
 		this.telefono = telefono;
 	}
 
-	public RubricaBean getRubrica() {
+	public Rubrica getRubrica() {
 		return rubrica;
 	}
 
-	public void setRubrica(RubricaBean rubrica) {
+	public void setRubrica(Rubrica rubrica) {
 		this.rubrica = rubrica;
 	}
+	
+	@Override
+	public boolean isValid() {
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+		boolean result=false;
+		
+		if(!nomeVoce.isEmpty() && nomeVoce!=null && 
+				!cognomeVoce.isEmpty() && cognomeVoce!=null &&
+				!telefono.isEmpty() && telefono!=null) {
+			result=true;
+		}
+		
+		return result;
 	}
 	
 }

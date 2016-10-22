@@ -1,6 +1,7 @@
-<%@page import="it.alfasoft.francesca.bean.RubricaBean"%>
-<%@page import="it.alfasoft.francesca.bean.VoceBean"%>
 
+
+<%@page import="model.Voce"%>
+<%@page import="model.Rubrica"%>
 <%@page import="it.alfasoft.francesca.service.Servizi"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -17,11 +18,11 @@
      
      String username = utente.getUsername();
      char ruolo=utente.getRuolo();
-     RubricaBean rbean=s.trovaRubrica(username);
+     Rubrica r=s.trovaRubrica(username);
 
-     VoceBean v= new VoceBean(nome,cognome,telefono);
+     Voce v= new Voce(nome,cognome,telefono);
      if(v.isValid()) {
-    	 s.registraVoce(rbean, v);
+    	 s.registraVoce(r, v);
     	 switch(ruolo) {
     	 
     	 case 'c' :

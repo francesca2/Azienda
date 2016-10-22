@@ -2,11 +2,11 @@ package it.alfasoft.francesca.service;
 
 import java.util.List;
 
+import model.Rubrica;
+import model.Voce;
 import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.bean.DipendenteBean;
-import it.alfasoft.francesca.bean.RubricaBean;
 import it.alfasoft.francesca.bean.UtenteBean;
-import it.alfasoft.francesca.bean.VoceBean;
 import it.alfasoft.francesca.dao.ClienteDao;
 import it.alfasoft.francesca.dao.DipendenteDao;
 import it.alfasoft.francesca.dao.RubricaDao;
@@ -44,6 +44,18 @@ public class Servizi {
 		return result;
 	}
 
+	//metodo per avere la lista dei clienti
+	public List<ClienteBean> getClienti(){
+		return cdao.getTuttiClienti();
+	}
+	
+	
+	//metodo per avere la lista dei dipendenti
+	
+	public List<DipendenteBean> getDipendenti(){
+		return ddao.getTuttiDipendenti();
+	}
+	
 	//metodo per codificare la password
 	public String convertiPass(String pass){
 
@@ -55,9 +67,27 @@ public class Servizi {
 		UtenteBean u =udao.trovaUtenteConUsername(username);
 		return u;
 	}
+	
+	public boolean trovaUsername(String username) {
+		boolean result =false;
+		UtenteBean u =udao.trovaUtenteConUsername(username);
+		if(u!=null) 
+		{
+			result=true;
+		}
+		return result;
+	}
 
+	//metodo per creare una rubrica
+	public boolean registraRubrica(String username)
+	{
+		Rubrica r= new Rubrica(username);
+		boolean b= rdao.creaRubrica(r);
+		return b;
+	}
+	
 	//metodo per aggiungere una voce in rubrica
-	public boolean registraVoce(RubricaBean r,VoceBean v) {
+	public boolean registraVoce(Rubrica r,Voce v) {
 		boolean result= false;
 		v.setRubrica(r);
 		r.addVoce(v);
@@ -74,26 +104,25 @@ public class Servizi {
 	}
 
 	//Metodo per trovare la rubrica di un utente a seconda del suo username
-	public RubricaBean trovaRubrica(String username) {
+	public Rubrica trovaRubrica(String username) {
 
-		RubricaBean r= rdao.trovaRubricaConNome(username);
+		Rubrica r= rdao.trovaRubricaConNome(username);
 
 		return r;
 	}
 
 	//metodo per prendere tutte le voci di rubrica
-	public List<VoceBean> getVoci(RubricaBean r) {
-		String s= r.getNomeRubrica();
-		List<VoceBean> lista = rdao.getVociRubrica(s);
+	public List<Voce> getVoci(Rubrica r) {
+		List<Voce> lista = vdao.getVociRubrica(r);
 
 		return lista;
 	}
 
 
 	//metodo per eliminare una voce
-	public boolean eliminaVoce(RubricaBean r, String nome, String cognome)
+	public boolean eliminaVoce(Rubrica r, String nome, String cognome)
 	{
-		VoceBean v=vdao.trovaVoce(nome, cognome, r.getId_Rubrica());
+		Voce v=vdao.trovaVoce(nome, cognome, r.getId_Rubrica());
 		boolean result=vdao.eliminaVoce(v);
 		return result;
 	}

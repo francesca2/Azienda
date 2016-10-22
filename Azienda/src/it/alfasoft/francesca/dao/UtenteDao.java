@@ -110,7 +110,6 @@ public class UtenteDao {
 	public boolean deleteUtente(UtenteBean u)
 	{
 		boolean result=false;
-		long id=u.getId_Utente();
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
 
@@ -118,10 +117,9 @@ public class UtenteDao {
 		tx=session.getTransaction();
 		tx.begin();
 		
-		Query query=session.createQuery("from UtenteBean where id=:x1");
-		query.setLong("x1",id );
+		session.delete(u);
 		
-		result=true;
+		result =true;
 		
 		 tx.commit();
 		}catch(Exception ex){

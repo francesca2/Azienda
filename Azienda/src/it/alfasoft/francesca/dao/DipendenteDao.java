@@ -1,9 +1,14 @@
 package it.alfasoft.francesca.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import hibernateUtil.HibernateUtil;
+import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.bean.UtenteBean;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -31,6 +36,27 @@ public class DipendenteDao {
 		}
 		
 		return result;	
+	}
+	
+	public List<DipendenteBean> getTuttiDipendenti() {
+		List<DipendenteBean> dipendenti= new ArrayList<DipendenteBean>();
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		Query query=session.createQuery("from DipendenteBean");
+		dipendenti=query.list();
+		
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return dipendenti;
 	}
 	
 }

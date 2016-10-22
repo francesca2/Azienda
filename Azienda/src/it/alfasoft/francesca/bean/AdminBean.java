@@ -1,5 +1,8 @@
 package it.alfasoft.francesca.bean;
 
+import javax.persistence.*;
+
+@Entity
 public class AdminBean extends UtenteBean {
 
 	/**

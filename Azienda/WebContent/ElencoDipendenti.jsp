@@ -1,15 +1,12 @@
-
-<%@page import="model.Voce"%>
-<%@page import="model.Rubrica"%>
+<%@page import="it.alfasoft.francesca.bean.DipendenteBean"%>
 <%@page import="java.util.List"%>
 <%@page import="it.alfasoft.francesca.service.Servizi"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
 	scope="session"></jsp:useBean>
-
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,12 +30,12 @@
 
 		<div class="menu">
 
-			<jsp:include page="menuLateraleDipendente.jsp"></jsp:include>
+			<jsp:include page="MenuLateraleAdmin.jsp"></jsp:include>
 
 		</div>
 		<div id="content">
 
-			<h2>Rubrica</h2>
+			<h2>Elenco Dipendenti</h2>
 
 			<table border="1">
 				<thead>
@@ -47,7 +44,9 @@
 						<th>n.</th>
 						<th>nome</th>
 						<th>cognome</th>
-						<th>telefono</th>
+						<th>username</th>
+						<th>posizionee</th>
+						<th>stipendio</th>
 					</tr>
 
 				</thead>
@@ -55,8 +54,7 @@
 				<%
 					Servizi s = new Servizi();
 					String usnm = utente.getUsername();
-					Rubrica rbean = s.trovaRubrica(usnm);
-					List<Voce> lista = s.getVoci(rbean);
+					List<DipendenteBean> lista = s.getDipendenti();
 					session.setAttribute("lista", lista);
 				%>
 				<c:set var="i" value="1" scope="page" />
@@ -65,9 +63,11 @@
 
 					<tr>
 						<td><c:out value="${i}" /></td>
-						<td><c:out value="${u.nomeVoce}" /></td>
-						<td><c:out value="${u.cognomeVoce}" /></td>
-						<td><c:out value="${u.telefono}" /></td>
+						<td><c:out value="${u.nome}" /></td>
+						<td><c:out value="${u.cognome}" /></td>
+						<td><c:out value="${u.username}" /></td>
+						<td><c:out value="${u.posizione}" /></td>
+						<td><c:out value="${u.stipendio}" /></td>
 					</tr>
 					<c:set var="i" value="${i + 1}" scope="page" />
 				</c:forEach>
