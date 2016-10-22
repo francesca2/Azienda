@@ -10,32 +10,22 @@ import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 public class Rubrica {
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id_Rubrica;
 	
 	private String nomeRubrica;
-	
 	@OneToMany(mappedBy="rubrica",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@NotFound(action=NotFoundAction.IGNORE)
 	private Set<Voce> listaVoci= new HashSet<Voce>();
-	
+
 	public Rubrica() {
+
 	}
 	
-	public Rubrica(long id_Rubrica, String nomeRubrica, Set<Voce> listaVoci) {
-		this.id_Rubrica = id_Rubrica;
+	public Rubrica(String nomeRubrica) {
 		this.nomeRubrica = nomeRubrica;
-		this.listaVoci = listaVoci;
-	}
-
-	public long getId_Rubrica() {
-		return id_Rubrica;
-	}
-
-	public void setId_Rubrica(long id_Rubrica) {
-		this.id_Rubrica = id_Rubrica;
 	}
 
 	public String getNomeRubrica() {
@@ -46,6 +36,14 @@ public class Rubrica {
 		this.nomeRubrica = nomeRubrica;
 	}
 
+	public long getIdRubrica() {
+		return id_Rubrica;
+	}
+
+	public void setIdRubrica(long idRubrica) {
+		this.id_Rubrica = idRubrica;
+	}
+	
 	public Set<Voce> getListaVoci() {
 		return listaVoci;
 	}
@@ -54,4 +52,9 @@ public class Rubrica {
 		this.listaVoci = listaVoci;
 	}
 
+	public void addVoce(Voce v){
+		this.listaVoci.add(v);
+	}
+
 }
+

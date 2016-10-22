@@ -18,8 +18,8 @@ I vari database disponibili sono in core-dialect. Oracle9 è deprecato e posso a
 
 <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> 
  <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property> 
- <property name="connection.username">Login</property>
- <property name="connection.password">login</property>
+ <property name="connection.username">Azienda</property>
+ <property name="connection.password">azienda</property>
 
 <!-- JDBC connection pool (use the built-in) -->
  <property name="connection.pool_size">1</property>
@@ -42,7 +42,11 @@ I vari database disponibili sono in core-dialect. Oracle9 è deprecato e posso a
 
 <!-- Imposto il percorso dove si trova la classe dalla queale voglio che mi crei la tabella -->
 <mapping class="it.alfasoft.francesca.bean.UtenteBean" />
-
+<mapping class="it.alfasoft.francesca.bean.AdminBean" />
+<mapping class="it.alfasoft.francesca.bean.ClienteBean" />
+<mapping class="it.alfasoft.francesca.bean.DipendenteBean" />
+<mapping class="model.Voce" />
+<mapping class="model.Rubrica" />
 
 
  </session-factory>

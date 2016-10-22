@@ -43,6 +43,4 @@ public class ClienteBean extends UtenteBean  {
 		return serialVersionUID;
 	}
 	
-	
-
 }

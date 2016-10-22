@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import Utility.IsValid;
+
 @Entity
-public class UtenteBean implements Serializable{
+@Inheritance(strategy=InheritanceType.JOINED)
+public class UtenteBean implements Serializable, IsValid{
 
 	/**
 	 * 
@@ -84,6 +87,23 @@ public class UtenteBean implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public boolean isValid() {
+
+		boolean result=false;
+		
+		if(!nome.isEmpty() && nome!=null && 
+				!cognome.isEmpty() && cognome!=null &&
+				!username.isEmpty() && username!=null &&
+				!password.isEmpty() && password!=null) {
+			if(ruolo=='a' || ruolo=='c' || ruolo=='d') {
+			result=true;
+			}
+		}
+		
+		return result;
 	}
 
 }

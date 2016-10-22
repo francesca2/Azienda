@@ -1,4 +1,4 @@
-package it.alfasoft.francesca.bean;
+package Utility;
 
 public interface IsValid {
 	

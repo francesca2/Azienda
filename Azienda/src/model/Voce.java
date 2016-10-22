@@ -1,10 +1,8 @@
 package model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+@Entity
 public class Voce {
 	
 	@Id
@@ -18,17 +16,15 @@ public class Voce {
 	private Rubrica rubrica;
 
 	public Voce() {
+
 	}
-	
-	public Voce(long id_Voce, String nome, String cognome, String telefono,
-			Rubrica rubrica) {
-		this.id_Voce = id_Voce;
+
+	public Voce(String nome, String cognome, String telefono) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.telefono = telefono;
-		this.rubrica = rubrica;
 	}
-
+	
 	public long getId_Voce() {
 		return id_Voce;
 	}
@@ -67,6 +63,6 @@ public class Voce {
 
 	public void setRubrica(Rubrica rubrica) {
 		this.rubrica = rubrica;
-	}
+}
 
 }
