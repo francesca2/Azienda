@@ -4,11 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import Utility.IsValid;
-
 @Entity
-public class VoceBean implements Serializable,IsValid {
-	
+public class VoceBean implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -17,23 +15,22 @@ public class VoceBean implements Serializable,IsValid {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id_Voce;
-	private String nome;
-	private String cognome;
+	private String nomeVoce;
+	private String cognomeVoce;
 	private String telefono;
-	
+
 	@ManyToOne
 	private RubricaBean rubrica;
 
 	public VoceBean() {
-
 	}
 
-	public VoceBean(String nome, String cognome, String telefono) {
-		this.nome = nome;
-		this.cognome = cognome;
+	public VoceBean(String nomeVoce, String cognomeVoce, String telefono) {
+		this.nomeVoce = nomeVoce;
+		this.cognomeVoce = cognomeVoce;
 		this.telefono = telefono;
 	}
-	
+
 	public long getId_Voce() {
 		return id_Voce;
 	}
@@ -42,20 +39,20 @@ public class VoceBean implements Serializable,IsValid {
 		this.id_Voce = id_Voce;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeVoce() {
+		return nomeVoce;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeVoce(String nomeVoce) {
+		this.nomeVoce = nomeVoce;
 	}
 
-	public String getCognome() {
-		return cognome;
+	public String getCognomeVoce() {
+		return cognomeVoce;
 	}
 
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setCognomeVoce(String cognomeVoce) {
+		this.cognomeVoce = cognomeVoce;
 	}
 
 	public String getTelefono() {
@@ -72,23 +69,10 @@ public class VoceBean implements Serializable,IsValid {
 
 	public void setRubrica(RubricaBean rubrica) {
 		this.rubrica = rubrica;
-}
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	@Override
-	public boolean isValid() {
-
-		boolean result=false;
-		
-		if(!nome.isEmpty() && nome!=null && 
-				!cognome.isEmpty() && cognome!=null &&
-				!telefono.isEmpty() && telefono!=null) {
-			result=true;
-		}
-		
-		return result;
-	}
-
+	
 }

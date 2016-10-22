@@ -56,22 +56,19 @@
 					String usnm = utente.getUsername();
 					RubricaBean rbean = s.trovaRubrica(usnm);
 					List<VoceBean> lista = s.getVoci(rbean);
-					session.setAttribute("lista", lista);
-				%>
-
-				<c:set var="i" value="1" scope="page" />
-
-				<c:forEach items="${lista}" var="v">
-
-					<tr>
-						<td><c:out value="${i}" ></c:out></td>
-						<td><c:out value="${v.nome}"></c:out></td>
-						<td><c:out value="${v.cognome}" ></c:out></td>
-						<td><c:out value="${v.telefono}" ></c:out></td>
-
+					int i=1;
+					for(VoceBean v: lista)
+					{
+						%>
+						<tr>
+						<td> <%=i %></td>
+						<td>  <%=v.getNome() %></td>
+						<td>  <%=v.getCognome() %></td>
+						<td>  <%=v.getTelefono() %></td>
 					</tr>
-					<c:set var="i" value="${i + 1}" scope="page" />
-				</c:forEach>
+					<%
+					}
+				%>
 
 </table>
 				</div>

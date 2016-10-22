@@ -55,7 +55,7 @@ public class VoceDao {
 		tx=session.getTransaction();
 		tx.begin();
 
-		Query query=session.createQuery("from VoceBean where Rubrica_id_Rubrica=:x1 and nome=:x2 and cognome=:x3");
+		Query query=session.createQuery("from VoceBean where Rubrica_id_Rubrica=:x1 and nomeVoce=:x2 and cognomeVoce=:x3");
 		query.setLong("x1", idRubrica);
 		query.setString("x2", nome);
 		query.setString("x3", cognome);
