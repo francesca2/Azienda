@@ -77,6 +77,22 @@ public class Servizi {
 		}
 		return result;
 	}
+	
+	
+	//metodo per cancellare un utente
+	public boolean eliminaUtente(UtenteBean u) {
+		if(u.getRuolo()=='a')
+		{
+			return false;
+		}
+		else {
+			Rubrica r=rdao.trovaRubricaConNome(u.getUsername());
+			if(r!=null) {
+			rdao.deleteUtente(r);
+			}
+			return udao.deleteUtente(u);
+		}
+	}
 
 	//metodo per creare una rubrica
 	public boolean registraRubrica(String username)

@@ -1,16 +1,16 @@
 #Container{width:100%;
            /* height:auto; */
       border:1px solid blue;
-           background:red;
+           background:CornflowerBlue;
 	  margin: 0;
 	  padding:0;
 	 
 	  } 
 #header{  top:0;
          height:60px;
-        background-color:red;
+        background-color:CornflowerBlue;
 		width:100%;
-            background:red;
+            background:CornflowerBlue;
 		text-align:center;
 		
 }
@@ -19,9 +19,9 @@ p{
 }
 
 .menu{
-	  width:30%;
+	  width:20%;
 	  height:350px;
-	  background:pink;
+	  background:DarkGreen;
 	  float:left;
 	  
 	  text-align:center;
@@ -34,7 +34,7 @@ p{
 	  
 /* 	     background-image: url('bgfootball.jpg'); */
 /* 	      background-size: 100%; */
-       background-color:gray;
+       background-color:GhostWhite;
 	   float:left;
 	   text-align:center;
 	   
@@ -48,9 +48,13 @@ p{
 		
 
  #footer{
-	    height:60px;
-		text-align:center;
-		background-color:orange;
+position: absolute;
+bottom:0; 
+width: 100%; 
+padding: 0.5em 0;
+    background-color: orange; 
+    color: #000;
+    text-align:center;
 } 
 
 ul
@@ -60,5 +64,12 @@ ul
 
 body{
 	margin:0;
+	color: black;
+}
+a:link {
+    color: black;
+}
+a:visited {
+    color: white;
 }
 .clear { clear:both;}

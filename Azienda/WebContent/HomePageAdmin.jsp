@@ -4,6 +4,7 @@
 uri="http://java.sun.com/jsp/jstl/core" %>
     <jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
 	scope="session"></jsp:useBean>
+<jsp:useBean id="message" class="Utility.MessageBean" scope="request"></jsp:useBean>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,6 +18,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="Container">
   
   <div id="header">
+  <h2>Admin</h2>
 <h1>
   <c:out value="${utente.nome}"/>
   <c:out value="${utente.cognome}"/>
@@ -31,7 +33,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   
   </div>
     <div id="content">
-   <h1>Welcome to Home Page </h1>
+   <h1>Welcome to the Admin Home Page </h1>
+      <%=message.getMessage()%>
   </div>
     <div id="footer">
  <h1>Footer</h1>

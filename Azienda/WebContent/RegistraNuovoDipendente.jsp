@@ -16,8 +16,11 @@
 <div id="Container">
   
   <div id="header">
-<h1>Header</h1>
-  
+  <h2>Admin</h2>
+<h1>
+  <c:out value="${utente.nome}"/>
+  <c:out value="${utente.cognome}"/>
+</h1>
   </div>
   
   

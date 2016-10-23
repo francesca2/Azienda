@@ -26,6 +26,7 @@
     	 switch(ruolo) {
     	 
     	 case 'c' :
+    		 message.setMessage("Voce aggiunta alla tua rubrica!");
  	    	%>
  		<jsp:forward page="HomePageCliente.jsp" />
  		<%
@@ -33,6 +34,7 @@
  		
  		case 'd' :
 	    	%>
+	    	 message.setMessage("Voce aggiunta alla tua rubrica!");
 		<jsp:forward page="HomePageDipendente.jsp" />
 		<%
 		break;

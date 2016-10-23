@@ -16,11 +16,11 @@
 <div id="Container">
   
   <div id="header">
-  <h2>Admin</h2>
 <h1>
-  <c:out value="${utente.nome}"/>
+ <c:out value="${utente.nome}"/>
   <c:out value="${utente.cognome}"/>
 </h1>
+  
   </div>
   
   
@@ -30,17 +30,15 @@
   
   </div>
     <div id="content">
-   <h1>Registrazione Nuovo Cliente</h1>
+   <h1>Cancella account</h1>
    <%=message.getMessage()%>
-<form action="doRegistraCliente.jsp" method="post">
+<form action="doCancellaUtente.jsp" method="post">
 Nome : <input type="text" name="nome" /> <br>
 Cognome : <input type="text" name="cognome"/> <br>
 Username : <input type="text" name="username"/> <br>
 Password : <input type="password" name="password"/> <br>
-Ragione Sociale : <input type="text" name="ragioneSociale"/> <br>
-Partita IVA : <input type="text" name="piva"/> <br>
 
-<input type="submit" value ="Registra"/>
+<input type="submit" value ="Elimina"/>
 
 </form>
 

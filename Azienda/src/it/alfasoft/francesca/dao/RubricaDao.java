@@ -1,6 +1,7 @@
 package it.alfasoft.francesca.dao;
 
 import hibernateUtil.HibernateUtil;
+import it.alfasoft.francesca.bean.UtenteBean;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
@@ -142,6 +143,30 @@ public class RubricaDao {
 		}
 		return result;
 		
+	}
+	
+	//Elimina Rubrica
+	public boolean deleteUtente(Rubrica r)
+	{
+		boolean result=false;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		session.delete(r);
+		
+		result =true;
+		
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return result;
 	}
 
 }

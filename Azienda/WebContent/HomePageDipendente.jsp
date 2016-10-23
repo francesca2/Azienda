@@ -5,6 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
 	scope="session"></jsp:useBean>
+	<jsp:useBean id="message" class="Utility.MessageBean" scope="request"></jsp:useBean>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,6 +21,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   
   <div id="header">
 <h1>
+<h2>Home page Cliente</h2>
   <c:out value="${utente.nome}"/>
   <c:out value="${utente.cognome}"/>
 </h1>
@@ -33,7 +35,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   
   </div>
     <div id="content">
-   <h1>Welcome to Dipendente homePage </h1>
+      <h1>Benvenuto
+   <%=utente.getNome() %> !
+   </h1>
+      <%=message.getMessage()%>
   </div>
     <div id="footer">
  <h1>Footer</h1>
