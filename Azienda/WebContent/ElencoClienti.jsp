@@ -17,28 +17,25 @@ if(admin.isValid()){
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="Stylesheet" type="text/css" href="css/stat.css">
 
-<title>Insert title here</title>
+<title>ElencoClienti</title>
 </head>
 <body>
 
-	<div id="Container">
+  <div class="header">
+  <h2>Admin</h2>
+	<p>
+  <c:out value="${admin.nome}"/>
+  <c:out value="${admin.cognome}"/>
+	</p>
+</div>
+  
+<div class="row">
+  
+<div class="col-2 menu">
+<jsp:include page="MenuLateraleAdmin.jsp"></jsp:include>
+</div>
 
-		<div id="header">
-			<h1>
-				<c:out value="${utente.nome}" />
-				<c:out value="${utente.cognome}" />
-			</h1>
-
-		</div>
-
-
-		<div class="menu">
-
-			<jsp:include page="MenuLateraleAdmin.jsp"></jsp:include>
-
-		</div>
-		<div id="content">
-
+    <div class="col-10 content">
 			<h2>Elenco Clienti</h2>
 
 			<table border="1">
@@ -91,7 +88,6 @@ if(admin.isValid()){
 
 <%
 }else {
-	session.invalidate();
 	response.sendRedirect("login.jsp");
 }
 %>

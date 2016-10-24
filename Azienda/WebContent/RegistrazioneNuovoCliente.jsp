@@ -18,32 +18,36 @@ if(admin.isValid()){
 </head>
 <body>
 
-<div id="Container">
-  
-  <div id="header">
+  <div class="header">
   <h2>Admin</h2>
-<h1>
+	<p>
   <c:out value="${admin.nome}"/>
   <c:out value="${admin.cognome}"/>
-</h1>
-  </div>
+	</p>
+</div>
   
+<div class="row">
   
-    <div  class="menu">
- 
-  <jsp:include page="MenuLateraleAdmin.jsp"></jsp:include>
-  
-  </div>
-    <div id="content">
+<div class="col-2 menu">
+<jsp:include page="MenuLateraleAdmin.jsp"></jsp:include>
+</div>
+
+    <div class="col-10 content">
    <h1>Registrazione Nuovo Cliente</h1>
    <%=message.getMessage()%>
 <form action="doRegistraCliente.jsp" method="post">
-Nome : <input type="text" name="nome" /> <br>
-Cognome : <input type="text" name="cognome"/> <br>
-Username : <input type="text" name="username"/> <br>
-Password : <input type="password" name="password"/> <br>
-Ragione Sociale : <input type="text" name="ragioneSociale"/> <br>
-Partita IVA : <input type="text" name="piva"/> <br>
+Nome :<br>
+ <input type="text" name="nome" /> <br>
+Cognome :<br>
+ <input type="text" name="cognome"/> <br>
+Username :<br>
+ <input type="text" name="username"/> <br>
+Password :<br>
+ <input type="password" name="password"/> <br>
+Ragione Sociale :<br>
+ <input type="text" name="ragioneSociale"/> <br>
+Partita IVA :<br>
+ <input type="text" name="piva"/> <br>
 
 <input type="submit" value ="Registra"/>
 

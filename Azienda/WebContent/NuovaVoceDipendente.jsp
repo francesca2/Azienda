@@ -20,31 +20,32 @@ if(dipendente.isValid()){
 </head>
 <body>
 
-<div id="Container">
-  
-  <div id="header">
-
-}
-<h1>
+  <div class="header">
+<h2>Home page Dipendente</h2>
+<p>
   <c:out value="${dipendente.nome}"/>
   <c:out value="${dipendente.cognome}"/>
-</h1>
+</p>
   
   </div>
-   
   
-    <div  class="menu">
- 
+<div class="row">
+  
+<div class="col-3 menu">
   <jsp:include page="menuLateraleDipendente.jsp"></jsp:include>
   
   </div>
-    <div id="content">
+  
+    <div class="col-9 content">
 <h1>Registra una nuova voce nella tua rubrica</h1>
 
 <form action="doRegistraVoceDipendente.jsp" method="post">
-Nome: <input type="text" name="nome" /> <br>
-Cognome: <input type="text" name="cognome"/> <br>
-Telefono: <input type="text" name="telefono"/> <br>
+Nome:<br>
+ <input type="text" name="nome" /> <br>
+Cognome:<br>
+ <input type="text" name="cognome"/> <br>
+Telefono:<br>
+ <input type="text" name="telefono"/> <br>
 
 <input type="submit" value ="Registra"/>
 

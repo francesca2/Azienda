@@ -20,27 +20,25 @@ if(cliente.isValid()){
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="Stylesheet" type="text/css" href="css/stat.css">
 
-<title>Insert title here</title>
+<title>Rubrica</title>
 </head>
 <body>
-
-	<div id="Container">
-
-		<div id="header">
-			<h1>
-				<c:out value="${cliente.nome}" />
-				<c:out value="${cliente.cognome}" />
-			</h1>
-
-		</div>
-
-
-		<div class="menu">
-
-			<jsp:include page="MenuLateraleCliente.jsp"></jsp:include>
-
-		</div>
-		<div id="content">
+  <div class="header">
+<h2>Elenco Contatti</h2>
+<p>
+  <c:out value="${cliente.nome}"/>
+  <c:out value="${cliente.cognome}"/>
+</p>
+  
+  </div>
+  
+<div class="row">
+  
+<div class="col-2 menu">
+  <jsp:include page="MenuLateraleCliente.jsp"></jsp:include>
+  
+  </div>
+    <div class="col-10 content">
 
 			<h2>Rubrica</h2>
 

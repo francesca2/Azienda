@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+            <%@ taglib prefix="c" 
+uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"
 	scope="session"></jsp:useBean>
 		 <jsp:useBean id="message" class="Utility.MessageBean" scope="request"></jsp:useBean>
@@ -18,23 +20,21 @@ if(admin.isValid()){
 </head>
 <body>
 
-<div id="Container">
-  
-  <div id="header">
-<h1>
- <c:out value="${admin.nome}"/>
+  <div class="header">
+  <h2>Admin</h2>
+	<p>
+  <c:out value="${admin.nome}"/>
   <c:out value="${admin.cognome}"/>
-</h1>
-  
+	</p>
   </div>
   
+<div class="row">
   
-    <div  class="menu">
- 
+<div class="col-2 menu">
   <jsp:include page="MenuLateraleAdmin.jsp"></jsp:include>
-  
   </div>
-    <div id="content">
+  
+    <div class="col-10 content">
    <h1>Cancella account</h1>
    <%=message.getMessage()%>
 <form action="doCancellaUtente.jsp" method="post">

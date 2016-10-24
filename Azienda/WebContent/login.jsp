@@ -11,21 +11,21 @@
 <title>Login Page</title>
 </head>
 <body>
-
-<div id="Container">
   
-  <div id="header">
+  <div class="header">
 <h1>
 Login page
 </h1>
   
   </div>
+<div class="row">
   
-  
-    <div  class="menu">
+<div class="col-2 menu">
  
   </div>
-    <div id="content">
+
+    <div class="col-10 body">
+
 <h1>Login page</h1>
 
 <%=message.getMessage()%>

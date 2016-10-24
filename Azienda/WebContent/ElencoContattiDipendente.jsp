@@ -24,24 +24,23 @@ if(dipendente.isValid()){
 </head>
 <body>
 
-	<div id="Container">
-
-		<div id="header">
-			<h1>
-				<c:out value="${dipendente.nome}" />
-				<c:out value="${dipendente.cognome}" />
-			</h1>
-
-		</div>
-
-
-		<div class="menu">
-
-			<jsp:include page="menuLateraleDipendente.jsp"></jsp:include>
-
-		</div>
-		<div id="content">
-
+  <div class="header">
+<h2>Elenco Contatti</h2>
+<p>
+  <c:out value="${dipendente.nome}"/>
+  <c:out value="${dipendente.cognome}"/>
+</p>
+  
+  </div>
+  
+<div class="row">
+  
+<div class="col-3 menu">
+  <jsp:include page="menuLateraleDipendente.jsp"></jsp:include>
+  
+  </div>
+  
+    <div class="col-9 content">
 			<h2>Rubrica</h2>
 
 			<table border="1">

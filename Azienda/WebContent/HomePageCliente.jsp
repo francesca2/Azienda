@@ -21,24 +21,22 @@ if(cliente.isValid()){
 </head>
 <body>
 
-<div id="Container">
-
-  <div id="header">
+  <div class="header">
 <h2>Home page Cliente</h2>
-<h1>
+<p>
   <c:out value="${cliente.nome}"/>
   <c:out value="${cliente.cognome}"/>
-</h1>
+</p>
   
   </div>
   
+<div class="row">
   
-    <div  class="menu">
- 
+<div class="col-2 menu">
   <jsp:include page="MenuLateraleCliente.jsp"></jsp:include>
   
   </div>
-    <div id="content">
+    <div class="col-10 content">
    <h1>Benvenuto
    <%=cliente.getNome() %> !
    </h1>

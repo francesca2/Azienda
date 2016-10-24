@@ -21,25 +21,22 @@ if(admin.isValid()){
 </head>
 <body>
 
-	<div id="Container">
+  <div class="header">
+  <h2>Admin</h2>
+	<p>
+  <c:out value="${admin.nome}"/>
+  <c:out value="${admin.cognome}"/>
+	</p>
+</div>
+  
+<div class="row">
+  
+<div class="col-2 menu">
+<jsp:include page="MenuLateraleAdmin.jsp"></jsp:include>
+</div>
 
-		<div id="header">
-			<h1>
-				<c:out value="${admin.nome}" />
-				<c:out value="${admin.cognome}" />
-			</h1>
-
-		</div>
-
-
-		<div class="menu">
-
-			<jsp:include page="MenuLateraleAdmin.jsp"></jsp:include>
-
-		</div>
-		<div id="content">
-
-			<h2>Elenco Dipendenti</h2>
+    <div class="col-10 content">
+    	<h2>Elenco Dipendenti</h2>
 
 			<table border="1">
 				<thead>

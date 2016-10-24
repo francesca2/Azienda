@@ -19,32 +19,31 @@ if(cliente.isValid()){
 <title>Insert title here</title>
 </head>
 <body>
-
-<div id="Container">
-  
-  <div id="header">
-
-}
+  <div class="header">
+<h2>Registra una nuova voce in Rubrica</h2>
 <h1>
   <c:out value="${cliente.nome}"/>
   <c:out value="${cliente.cognome}"/>
 </h1>
   
   </div>
-   
   
-    <div  class="menu">
- 
+<div class="row">
+  
+<div class="col-2 menu">
   <jsp:include page="MenuLateraleCliente.jsp"></jsp:include>
   
   </div>
-    <div id="content">
+    <div class="col-10 content">
 <h1>Registra una nuova voce nella tua rubrica</h1>
 
 <form action="doRegistraVoceCliente.jsp" method="post">
-Nome: <input type="text" name="nome" /> <br>
-Cognome: <input type="text" name="cognome"/> <br>
-Telefono: <input type="text" name="telefono"/> <br>
+Nome:<br>
+ <input type="text" name="nome" /> <br>
+Cognome:<br>
+ <input type="text" name="cognome"/> <br>
+Telefono:<br>
+ <input type="text" name="telefono"/> <br>
 
 <input type="submit" value ="Registra"/>
 
