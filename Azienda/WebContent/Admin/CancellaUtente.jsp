@@ -62,6 +62,6 @@ Password : <input type="password" name="password"/> <br>
 <%
 }else {
 	session.invalidate();
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../Accesso/login.jsp");
 }
 %>

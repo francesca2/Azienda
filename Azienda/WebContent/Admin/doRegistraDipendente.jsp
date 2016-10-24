@@ -24,7 +24,7 @@
         message.setMessage("Dipendente registrato!");
         
         %>
-    	<jsp:forward page=".././HomePage/HomePageAdmin.jsp"/>
+    	<jsp:forward page="../HomePage/HomePageAdmin.jsp"/>
     <%
     }
     else{

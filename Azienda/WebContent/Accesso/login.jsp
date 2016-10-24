@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <link rel="Stylesheet" type="text/css" href="css/stat.css">
+  <link rel="Stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stat.css">
 
 <title>Login Page</title>
 </head>

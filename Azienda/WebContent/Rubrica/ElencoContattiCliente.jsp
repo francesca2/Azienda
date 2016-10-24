@@ -35,7 +35,7 @@ if(cliente.isValid()){
 <div class="row">
   
 <div class="col-2 menu">
-  <jsp:include page=".././MenuLaterale/MenuLateraleCliente.jsp"></jsp:include>
+  <jsp:include page="../MenuLaterale/MenuLateraleCliente.jsp"></jsp:include>
   
   </div>
     <div class="col-10 content">
@@ -90,6 +90,6 @@ if(cliente.isValid()){
 
 <%
 }else {
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../Accesso/login.jsp");
 }
 %>

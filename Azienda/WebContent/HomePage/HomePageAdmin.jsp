@@ -50,6 +50,6 @@ if(admin.isValid()){
 
 <%
 }else {
-	response.sendRedirect("../login.jsp");
+	response.sendRedirect("../Accesso/login.jsp");
 }
 %>

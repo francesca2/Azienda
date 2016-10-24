@@ -55,6 +55,6 @@ if(dipendente.isValid()){
 
 <%
 }else {
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../login.jsp");
 }
 %>

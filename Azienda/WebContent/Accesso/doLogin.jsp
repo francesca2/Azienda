@@ -42,7 +42,7 @@
     			session.setAttribute("admin",ad);
     			
     			%>
-			<jsp:forward page="./HomePage/HomePageAdmin.jsp" />
+			<jsp:forward page="../HomePage/HomePageAdmin.jsp" />
 			<%
 			break;
 
@@ -50,7 +50,7 @@
     			ClienteBean cl=s.getCliente(usnm);
     			session.setAttribute("cliente",cl);
     	    	%>
-    		<jsp:forward page="./HomePageHomePageCliente.jsp" />
+    		<jsp:forward page="../HomePage/HomePageCliente.jsp" />
     		<%
     		break;
     		
@@ -58,7 +58,7 @@
     			DipendenteBean dp=s.getDipendente(usnm);
     			session.setAttribute("dipendente", dp);
     	    	%>
-    		<jsp:forward page="./HomePageHomePageDipendente.jsp" />
+    		<jsp:forward page="../HomePage/HomePageDipendente.jsp" />
     		<%
     		break;
     		}

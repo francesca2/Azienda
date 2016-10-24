@@ -36,7 +36,7 @@ if(dipendente.isValid()){
 <div class="row">
   
 <div class="col-3 menu">
-  <jsp:include page=".././MenuLaterale/menuLateraleDipendente.jsp"></jsp:include>
+  <jsp:include page="../MenuLaterale/menuLateraleDipendente.jsp"></jsp:include>
   
   </div>
   
@@ -91,6 +91,6 @@ if(dipendente.isValid()){
 
 <%
 }else {
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../Accesso/login.jsp");
 }
 %>
