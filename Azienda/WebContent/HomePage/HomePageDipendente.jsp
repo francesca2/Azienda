@@ -15,7 +15,7 @@ if(dipendente.isValid()){
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <link rel="Stylesheet" type="text/css" href="css/stat.css">
+  <link rel="Stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stat.css">
 
 <title>Insert title here</title>
 </head>
@@ -33,7 +33,7 @@ if(dipendente.isValid()){
 <div class="row">
   
 <div class="col-3 menu">
-  <jsp:include page="menuLateraleDipendente.jsp"></jsp:include>
+  <jsp:include page=".././MenuLaterale/menuLateraleDipendente.jsp"></jsp:include>
   
   </div>
   

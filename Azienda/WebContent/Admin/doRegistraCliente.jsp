@@ -27,7 +27,7 @@
         message.setMessage("Cliente registrato!");
         
         %>
-    	<jsp:forward page="HomePageAdmin.jsp"/>
+    	<jsp:forward page=".././HomePage/HomePageAdmin.jsp"/>
     <%
     }
     else{

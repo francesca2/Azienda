@@ -1,47 +1,42 @@
-
-<%@page import="model.Voce"%>
-<%@page import="model.Rubrica"%>
+<%@page import="it.alfasoft.francesca.bean.DipendenteBean"%>
 <%@page import="java.util.List"%>
 <%@page import="it.alfasoft.francesca.service.Servizi"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<jsp:useBean id="dipendente" class="it.alfasoft.francesca.bean.DipendenteBean"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"
 	scope="session"></jsp:useBean>
 	
-	   		 <% 
-if(dipendente.isValid()){
-%>  
-
+	<% 
+if(admin.isValid()){
+%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="Stylesheet" type="text/css" href="css/stat.css">
+<link rel="Stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stat.css">
 
 <title>Insert title here</title>
 </head>
 <body>
 
   <div class="header">
-<h2>Elenco Contatti</h2>
-<p>
-  <c:out value="${dipendente.nome}"/>
-  <c:out value="${dipendente.cognome}"/>
-</p>
-  
-  </div>
+  <h2>Admin</h2>
+	<p>
+  <c:out value="${admin.nome}"/>
+  <c:out value="${admin.cognome}"/>
+	</p>
+</div>
   
 <div class="row">
   
-<div class="col-3 menu">
-  <jsp:include page="menuLateraleDipendente.jsp"></jsp:include>
-  
-  </div>
-  
-    <div class="col-9 content">
-			<h2>Rubrica</h2>
+<div class="col-2 menu">
+<jsp:include page=".././MenuLaterale/MenuLateraleAdmin.jsp"></jsp:include>
+</div>
+
+    <div class="col-10 content">
+    	<h2>Elenco Dipendenti</h2>
 
 			<table border="1">
 				<thead>
@@ -50,16 +45,17 @@ if(dipendente.isValid()){
 						<th>n.</th>
 						<th>nome</th>
 						<th>cognome</th>
-						<th>telefono</th>
+						<th>username</th>
+						<th>posizionee</th>
+						<th>stipendio</th>
 					</tr>
 
 				</thead>
 
 				<%
 					Servizi s = new Servizi();
-					String usnm = dipendente.getUsername();
-					Rubrica rbean = s.trovaRubrica(usnm);
-					List<Voce> lista = s.getVoci(rbean);
+					String usnm = admin.getUsername();
+					List<DipendenteBean> lista = s.getDipendenti();
 					session.setAttribute("lista", lista);
 				%>
 				<c:set var="i" value="1" scope="page" />
@@ -68,9 +64,11 @@ if(dipendente.isValid()){
 
 					<tr>
 						<td><c:out value="${i}" /></td>
-						<td><c:out value="${u.nomeVoce}" /></td>
-						<td><c:out value="${u.cognomeVoce}" /></td>
-						<td><c:out value="${u.telefono}" /></td>
+						<td><c:out value="${u.nome}" /></td>
+						<td><c:out value="${u.cognome}" /></td>
+						<td><c:out value="${u.username}" /></td>
+						<td><c:out value="${u.posizione}" /></td>
+						<td><c:out value="${u.stipendio}" /></td>
 					</tr>
 					<c:set var="i" value="${i + 1}" scope="page" />
 				</c:forEach>
@@ -91,6 +89,7 @@ if(dipendente.isValid()){
 
 <%
 }else {
-	response.sendRedirect("login.jsp");
+	response.sendRedirect(".././login.jsp");
 }
+
 %>

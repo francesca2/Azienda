@@ -25,7 +25,7 @@
 		{
 			message.setMessage("Utente eliminato");
 	        %>
-	    	<jsp:forward page="HomePageAdmin.jsp"/>
+	    	<jsp:forward page=".././HomePage/HomePageAdmin.jsp"/>
 	    <%
 		}
 		else
