@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
+<jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"
 	scope="session"></jsp:useBean>
 		 <jsp:useBean id="message" class="Utility.MessageBean" scope="request"></jsp:useBean>
+		 
+		 <% 
+if(admin.isValid()){
+%>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -18,8 +23,8 @@
   <div id="header">
   <h2>Admin</h2>
 <h1>
-  <c:out value="${utente.nome}"/>
-  <c:out value="${utente.cognome}"/>
+  <c:out value="${admin.nome}"/>
+  <c:out value="${admin.cognome}"/>
 </h1>
   </div>
   
@@ -55,3 +60,10 @@ Stipendio : <input type="number" name="stipendio"/> <br>
   </div> <!--  end of container -->
 </body>
 </html>
+
+<%
+}else {
+	session.invalidate();
+	response.sendRedirect("login.jsp");
+}
+%>

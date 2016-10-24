@@ -38,6 +38,32 @@ public class DipendenteDao {
 		return result;	
 	}
 	
+	public DipendenteBean trovaDipendenteConUsername(String username) {
+		
+		DipendenteBean dbean=null;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		Query query=session.createQuery("from UtenteBean where username=:x1");
+		query.setString("x1", username);
+		
+		dbean=(DipendenteBean) query.uniqueResult();
+
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return dbean;
+		
+	}
+
+	
 	public List<DipendenteBean> getTuttiDipendenti() {
 		List<DipendenteBean> dipendenti= new ArrayList<DipendenteBean>();
 		Session session =HibernateUtil.openSession();

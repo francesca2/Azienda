@@ -15,7 +15,7 @@
 		
 }
 p{
-	color:blue
+	color:black;
 }
 
 .menu{
@@ -31,7 +31,7 @@ p{
 #content{
 	   width:70%;
 	   height:350px;
-	  
+	  padding:20px;
 /* 	     background-image: url('bgfootball.jpg'); */
 /* 	      background-size: 100%; */
        background-color:GhostWhite;

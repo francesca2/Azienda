@@ -2,15 +2,14 @@
     pageEncoding="ISO-8859-1"%>
             <%@ taglib prefix="c" 
 uri="http://java.sun.com/jsp/jstl/core" %>
-
+    
 <jsp:useBean id="dipendente" class="it.alfasoft.francesca.bean.DipendenteBean"
 	scope="session"></jsp:useBean>
-	<jsp:useBean id="message" class="Utility.MessageBean" scope="request"></jsp:useBean>
-
+  
    		 <% 
 if(dipendente.isValid()){
-%> 
-
+%>  
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,14 +23,15 @@ if(dipendente.isValid()){
 <div id="Container">
   
   <div id="header">
+
+}
 <h1>
-<h2>Home page Dipendente</h2>
   <c:out value="${dipendente.nome}"/>
   <c:out value="${dipendente.cognome}"/>
 </h1>
   
   </div>
-  
+   
   
     <div  class="menu">
  
@@ -39,11 +39,17 @@ if(dipendente.isValid()){
   
   </div>
     <div id="content">
-      <h1>Benvenuto
-   <%=dipendente.getNome() %> !
-   </h1>
-      <%=message.getMessage()%>
-  </div>
+<h1>Registra una nuova voce nella tua rubrica</h1>
+
+<form action="doRegistraVoceDipendente.jsp" method="post">
+Nome: <input type="text" name="nome" /> <br>
+Cognome: <input type="text" name="cognome"/> <br>
+Telefono: <input type="text" name="telefono"/> <br>
+
+<input type="submit" value ="Registra"/>
+
+</form>
+ </div>
     <div id="footer">
  <h1>Footer</h1>
  

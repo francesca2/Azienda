@@ -2,9 +2,15 @@
     pageEncoding="ISO-8859-1"%>
             <%@ taglib prefix="c" 
 uri="http://java.sun.com/jsp/jstl/core" %>
-    <jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
+    <jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"
 	scope="session"></jsp:useBean>
 <jsp:useBean id="message" class="Utility.MessageBean" scope="request"></jsp:useBean>	
+
+<% 
+if(admin.isValid()){
+%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,10 +25,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   
   <div id="header">
   <h2>Admin</h2>
-<h1>
-  <c:out value="${utente.nome}"/>
-  <c:out value="${utente.cognome}"/>
-</h1>
+<p>
+  <c:out value="${admin.nome}"/>
+  <c:out value="${admin.cognome}"/>
+</p>
   
   </div>
   
@@ -45,3 +51,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   </div> <!--  end of container -->
 </body>
 </html>
+
+<%
+}else {
+	response.sendRedirect("login.jsp");
+}
+%>

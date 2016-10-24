@@ -36,6 +36,31 @@ public class ClienteDao {
 		
 		return result;	
 	}
+	
+	public ClienteBean trovaClienteConUsername(String username) {
+		
+		ClienteBean cbean=null;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		Query query=session.createQuery("from UtenteBean where username=:x1");
+		query.setString("x1", username);
+		
+		cbean=(ClienteBean) query.uniqueResult();
+
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return cbean;
+		
+	}
 
 	public List<ClienteBean> getTuttiClienti() {
 		List<ClienteBean> clienti= new ArrayList<ClienteBean>();

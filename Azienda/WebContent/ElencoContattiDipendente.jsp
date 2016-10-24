@@ -7,8 +7,12 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
+<jsp:useBean id="dipendente" class="it.alfasoft.francesca.bean.DipendenteBean"
 	scope="session"></jsp:useBean>
+	
+	   		 <% 
+if(dipendente.isValid()){
+%>  
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,8 +28,8 @@
 
 		<div id="header">
 			<h1>
-				<c:out value="${utente.nome}" />
-				<c:out value="${utente.cognome}" />
+				<c:out value="${dipendente.nome}" />
+				<c:out value="${dipendente.cognome}" />
 			</h1>
 
 		</div>
@@ -54,7 +58,7 @@
 
 				<%
 					Servizi s = new Servizi();
-					String usnm = utente.getUsername();
+					String usnm = dipendente.getUsername();
 					Rubrica rbean = s.trovaRubrica(usnm);
 					List<Voce> lista = s.getVoci(rbean);
 					session.setAttribute("lista", lista);
@@ -85,3 +89,9 @@
 	<!--  end of container -->
 </body>
 </html>
+
+<%
+}else {
+	response.sendRedirect("login.jsp");
+}
+%>

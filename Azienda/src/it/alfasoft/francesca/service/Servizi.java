@@ -4,9 +4,11 @@ import java.util.List;
 
 import model.Rubrica;
 import model.Voce;
+import it.alfasoft.francesca.bean.AdminBean;
 import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.bean.UtenteBean;
+import it.alfasoft.francesca.dao.AdminDao;
 import it.alfasoft.francesca.dao.ClienteDao;
 import it.alfasoft.francesca.dao.DipendenteDao;
 import it.alfasoft.francesca.dao.RubricaDao;
@@ -17,6 +19,7 @@ import Utility.PasswordCodification;
 public class Servizi {
 
 	UtenteDao udao=new UtenteDao();
+	AdminDao adao= new AdminDao();
 	ClienteDao cdao=new ClienteDao();
 	DipendenteDao ddao=new DipendenteDao();
 	RubricaDao rdao= new RubricaDao();
@@ -65,6 +68,21 @@ public class Servizi {
 	//metodo per trovare un utente usando il suo username
 	public UtenteBean getUtente(String username) {
 		UtenteBean u =udao.trovaUtenteConUsername(username);
+		return u;
+	}
+	
+	public AdminBean getAdmin(String username) {
+		AdminBean u =adao.trovaAdminConUsername(username);
+		return u;
+	}
+	
+	public ClienteBean getCliente(String username) {
+		ClienteBean u =cdao.trovaClienteConUsername(username);
+		return u;
+	}
+	
+	public DipendenteBean getDipendente(String username) {
+		DipendenteBean u =ddao.trovaDipendenteConUsername(username);
 		return u;
 	}
 	

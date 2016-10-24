@@ -4,8 +4,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean"
+<jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"
 	scope="session"></jsp:useBean>
+	
+	<% 
+if(admin.isValid()){
+%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -53,7 +57,6 @@
 
 				<%
 					Servizi s = new Servizi();
-					String usnm = utente.getUsername();
 					List<ClienteBean> lista = s.getClienti();
 					session.setAttribute("lista", lista);
 				%>
@@ -85,3 +88,10 @@
 	<!--  end of container -->
 </body>
 </html>
+
+<%
+}else {
+	session.invalidate();
+	response.sendRedirect("login.jsp");
+}
+%>

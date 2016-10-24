@@ -7,5 +7,6 @@
         <li><a href="RegistraNuovoDipendente.jsp">Nuovo Dipendente</a></li>
         <li><a href="ElencoDipendenti.jsp">Elenco Dipendenti</a></li>
         <li><a href="CancellaUtente.jsp">Elimina un account </a></li>
+         <li><a href="doLogout.jsp">Logout </a></li>       
    </ul>
   
